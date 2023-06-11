@@ -10,11 +10,14 @@
 <body>
     <h1 class= "title is-underlined is-1  has-text-centered has-text-primary-dark">5 Day forecast</class>
     <div class="box is-3by1 is-rounded is primary-dark">
-        <input class= "input is-primary is-rounded" style="width: 33%;" type="text" placeholder="Enter city name here"></class>
+        <input class= "input is-primary is-rounded" id="Cityinput" style="width: 33%;" type="text" placeholder="Enter city name here"></class>
     </div>
-    <div><a class="button is-rounded is-success">Check City</a></div>
+    <button onclick= "getcity();" class="button is-rounded is-success">Check City</button>
+    <div class="box">
+    <h2 class= "subtitle has-text-centered has-text-primary" id="Cityname"></class>
+    </div>
 
-<div id="Weather">
+    <div id="Weather">
     <div id="Icons">
         <p class="weather" id="Day1"></p>
         <div class="image"><img src="dots.png" class="imgclass" id="img1"></div>
@@ -52,7 +55,7 @@
 
 
 </div>
-
+<script src="script.js"></script>
     </body>
 </html>
  
