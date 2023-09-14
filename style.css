@@ -1,0 +1,114 @@
+
+body, h1, h2, h3, h4, h5, h6, p, ul, li {
+    margin: 0;
+    padding: 0;
+  }
+  
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+  }
+  
+
+  header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+  }
+  
+
+  .sidebar {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    width: 30%;
+  }
+  
+  .sidebar h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .input-group {
+    display: flex;
+  }
+  
+  .input-group input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .input-group button {
+    background-color: #333;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+
+  #city-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  #city-list li {
+    padding: 5px 0;
+    border-top: 1px solid #ccc;
+  }
+  
+
+  .main-content {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    flex: 1;
+  }
+  
+  .card {
+    margin-bottom: 20px;
+  }
+  
+  .card-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+
+  .forecast {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .forecast .forecast-item {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: calc(33.33% - 10px);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
