@@ -2,60 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
-    <title>Weather</title>
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 </head>
 <body>
-    <h1 class= "title is-underlined is-1  has-text-centered has-text-primary-dark">5 Day forecast</class>
-    <div class="box is-3by1 is-rounded is primary-dark">
-        <input class= "input is-primary is-rounded" id="Cityinput" style="width: 33%;" type="text" placeholder="Enter city name here"></class>
-    </div>
-    <button onclick= "getcity();" class="button is-rounded is-success">Check City</button>
-    <div class="box">
-    <h2 class= "subtitle has-text-centered has-text-primary" id="Cityname"></class>
-    </div>
-
-    <div id="Weather">
-    <div id="Icons">
-        <p class="weather" id="Day1"></p>
-        <div class="image"><img src="dots.png" class="imgclass" id="img1"></div>
-        <p class="mintemp" id="day1min"></p>
-        <p class="maxtemp" id="day1max"></p>
-    </div>
-
-    <div id="Icons">
-        <p class="weather" id="Day1"></p>
-        <div class="image"><img src="dots.png" class="imgclass" id="img1"></div>
-        <p class="mintemp" id="day1min"></p>
-        <p class="maxtemp" id="day1max"></p>
-    </div>
-
-    <div id="Icons">
-        <p class="weather" id="Day1"></p>
-        <div class="image"><img src="dots.png" class="imgclass" id="img1"></div>
-        <p class="mintemp" id="day1min"></p>
-        <p class="maxtemp" id="day1max"></p>
-    </div>
-
-    <div id="Icons">
-        <p class="weather" id="Day1"></p>
-        <div class="image"><img src="dots.png" class="imgclass" id="img1"></div>
-        <p class="mintemp" id="day1min"></p>
-        <p class="maxtemp" id="day1max"></p>
-    </div>
-
-    <div id="Icons">
-        <p class="weather" id="Day1"></p>
-        <div class="image"><img src="dots.png" class="imgclass" id="img1"></div>
-        <p class="mintemp" id="day1min"></p>
-        <p class="maxtemp" id="day1max"></p>
-    </div>
-
-
-</div>
-<script src="script.js"></script>
-    </body>
-</html>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
  
+    <div class="container">
+        <div class="sidebar">
+            <h3>Search for a City:</h3>
+            <div class="input-group">
+                <input
+                    type="text"
+                    id="city-input"
+                    class="form-control"
+                    placeholder="City Name"
+                    aria-describedby="search-city"
+                />
+                <button
+                    class="btn"
+                    type="button"
+                    id="search-city"
+                >
+                <i class="material-icons">search</i>
+                </button>
+            </div>
+            <ul id="city-list"></ul>
+        </div>
+     
+        <div class="main-content" id="city-info">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text" id="temperature"></p>
+                    <p class="card-text" id="humidity"></p>
+                    <p class="card-text" id="wind-speed"></p>
+                    <p class="card-text" id="uv-index"></p>
+                </div>
+            </div>
+            <h3>5-Day Forecast</h3>
+            <div class="forecast" id="forecast"></div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="script.js"></script>
+</html>
