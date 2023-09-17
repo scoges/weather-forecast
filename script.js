@@ -93,13 +93,13 @@ function renderCityInfo(lat, lon) {
             var temperatureInFahrenheit = response.current.temp;
             var temperatureInCelsius = fahrenheitToCelsius(temperatureInFahrenheit);
 
-            document.getElementById("temperature").textContent = `Temperature: ${temperatureInCelsius} °C`;
+            document.getElementById("temperature").textContent = `Temperature: ${temperatureInCelsius.toFixed(2)} °C`;
             document.getElementById("humidity").textContent = `Humidity: ${response.current.humidity}%`;
-            document.getElementById("wind-speed").textContent = `Wind Speed: ${response.current.wind_speed} MPH`;
+            document.getElementById("wind-speed").textContent = `Wind Speed: ${response.current.wind_speed.toFixed(2)} MPH`;
             var uvIndexContainer = document.getElementById("uv-index");
             uvIndexContainer.textContent = "UV Index: ";
             var uviSpan = document.createElement("span");
-            uviSpan.textContent = response.current.uvi;
+            uviSpan.textContent = response.current.uvi.toFixed(2);
             uvIndexContainer.appendChild(uviSpan);
             renderForecast(response);
         });
@@ -136,11 +136,11 @@ function renderForecast(response) {
         var dayTemp = document.createElement("p");
         var temperatureInFahrenheit = day.temp.max;
         var temperatureInCelsius = fahrenheitToCelsius(temperatureInFahrenheit);
-        dayTemp.textContent = `Temp: ${temperatureInCelsius} °C`;
+        dayTemp.textContent = `Temp: ${temperatureInCelsius.toFixed(2)} °C`;
         dayCardBody.appendChild(dayTemp);
 
         var dayHumidity = document.createElement("p");
-        dayHumidity.textContent = `Humidity: ${day.humidity}%`;
+        dayHumidity.textContent = `Humidity: ${day.humidity.toFixed(2)}%`;
         dayCardBody.appendChild(dayHumidity);
 
         forecastContainer.appendChild(dayCard);
@@ -148,10 +148,9 @@ function renderForecast(response) {
 }
 
 function fahrenheitToCelsius(fahrenheit) {
-    const celsius = (fahrenheit - 32) / 1.8;
+    const celsius = (fahrenheit - 32) * 5/9;
     return celsius;
 }
-
 
 if (lastCitySearched) {
     renderLastCityInfo();
