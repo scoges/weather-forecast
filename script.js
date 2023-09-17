@@ -94,8 +94,8 @@ function renderCityInfo(lat, lon) {
             var temperatureInCelsius = fahrenheitToCelsius(temperatureInFahrenheit);
 
             document.getElementById("temperature").textContent = `Temperature: ${temperatureInCelsius.toFixed(2)} °C`;
-            document.getElementById("humidity").textContent = `Humidity: ${response.current.humidity}%`;
-            document.getElementById("wind-speed").textContent = `Wind Speed: ${response.current.wind_speed.toFixed(2)} MPH`;
+            document.getElementById("humidity").textContent = `Humidity: ${response.current.humidity.toFixed(2)}%`;
+            document.getElementById("wind-speed").textContent = `Wind Speed: ${mphToKph(response.current.wind_speed).toFixed(2)} KPH`;
             var uvIndexContainer = document.getElementById("uv-index");
             uvIndexContainer.textContent = "UV Index: ";
             var uviSpan = document.createElement("span");
@@ -150,6 +150,10 @@ function renderForecast(response) {
 function fahrenheitToCelsius(fahrenheit) {
     const celsius = (fahrenheit - 32) * 5/9;
     return celsius;
+}
+
+function mphToKph(mph) {
+    return mph * 1.60934;
 }
 
 if (lastCitySearched) {
