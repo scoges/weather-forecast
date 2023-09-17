@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+    <script src="https://kit.fontawesome.com/9d317aec20.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <h1>Weather Dashboard</h1>
     </header>
- 
-    <div class="container">
-        <div class="sidebar">
+
+    <div class="row container-fluid">
+        <div class="col-3 sidebar">
             <h3>Search for a City:</h3>
-            <div class="input-group">
+            <div class="input-group mb-3">
                 <input
                     type="text"
                     id="city-input"
@@ -24,19 +24,21 @@
                     placeholder="City Name"
                     aria-describedby="search-city"
                 />
-                <button
-                    class="btn"
-                    type="button"
-                    id="search-city"
-                >
-                <i class="material-icons">search</i>
-                </button>
+                <div class="input-group-append">
+                    <button
+                        class="btn btn-outline-secondary"
+                        type="button"
+                        id="search-city"
+                    >
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
             </div>
-            <ul id="city-list"></ul>
+            <ul class="list-group" id="city-list"></ul>
         </div>
-     
-        <div class="main-content" id="city-info">
-            <div class="card">
+
+        <div class="col" id="city-info">
+            <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title"></h5>
                     <p class="card-text" id="temperature"></p>
@@ -46,10 +48,13 @@
                 </div>
             </div>
             <h3>5-Day Forecast</h3>
-            <div class="forecast" id="forecast"></div>
+            <div class="row row-cols-3" id="forecast"></div>
         </div>
     </div>
+    <div id="weather-background"></div>
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="script.js"></script>
 </html>
