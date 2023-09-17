@@ -12,8 +12,8 @@ body, h1, h2, h3, h4, h5, h6, p, ul, li {
   
 
   header {
-    background-color: #095863;
-    color: white;
+    background-image: url(./assets/weatherheader.png);
+    color: rgb(0, 0, 0);
     text-align: center;
     padding: 20px 0;
   }
@@ -27,7 +27,7 @@ body, h1, h2, h3, h4, h5, h6, p, ul, li {
   
 
   .sidebar {
-    background-color: #fff;
+    background-image: url(./assets/weather.png);
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 20px;

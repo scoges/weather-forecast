@@ -1,23 +1,21 @@
 var APIKey = "943028596f95a56ea44118254164c793";
+
 var lastCitySearched;
 var storedCities;
 var cities = [];
 
 if (localStorage.getItem("cities")) {
     storedCities = JSON.parse(localStorage.getItem("cities"));
-    console.log(storedCities);
     lastCitySearched = storedCities[storedCities.length - 1];
     cities = storedCities;
 }
 
 renderLastCityInfo();
-console.log("cities", cities);
 
 document.getElementById("search-city").addEventListener("click", function (event) {
     event.preventDefault();
 
     var city = document.getElementById("city-input").value;
-    console.log(city);
 
     var queryURL1 =
         "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
@@ -27,7 +25,6 @@ document.getElementById("search-city").addEventListener("click", function (event
             return response.json();
         })
         .then(function (response) {
-            console.log(response);
             lat = response.coord.lat;
             lon = response.coord.lon;
             cities.push(city);
@@ -61,7 +58,6 @@ function renderLastCityInfo() {
             return response.json();
         })
         .then(function (response) {
-            console.log(response);
             lat = response.coord.lat;
             lon = response.coord.lon;
 
@@ -113,7 +109,7 @@ function renderForecast(response) {
     days.forEach(function (day) {
         var dayCard = document.createElement("div");
         dayCard.className = "card col-md-4 daycard";
-        dayCard.style.backgroundColor = "lightblue";
+        dayCard.style.backgroundColor = "lightgreen";
         dayCard.style.marginRight = "5px";
         dayCard.style.fontSize = "15px";
 
@@ -153,7 +149,8 @@ function fahrenheitToCelsius(fahrenheit) {
 }
 
 function mphToKph(mph) {
-    return mph * 1.60934;
+    const kph = mph * 1.60934;
+    return kph;
 }
 
 if (lastCitySearched) {
