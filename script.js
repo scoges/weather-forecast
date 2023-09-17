@@ -12,6 +12,7 @@ if (localStorage.getItem("cities")) {
 
 renderLastCityInfo();
 console.log("cities", cities);
+
 document.getElementById("search-city").addEventListener("click", function (event) {
     event.preventDefault();
 
@@ -19,7 +20,7 @@ document.getElementById("search-city").addEventListener("click", function (event
     console.log(city);
 
     var queryURL1 =
-        "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+        "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
 
     fetch(queryURL1)
         .then(function (response) {
@@ -40,7 +41,6 @@ document.getElementById("search-city").addEventListener("click", function (event
             cityItem.setAttribute("lon", response.coord.lon);
             cityList.insertBefore(cityItem, cityList.firstChild);
 
-
             cityItem.addEventListener("click", function () {
                 lat = this.getAttribute("lat");
                 lon = this.getAttribute("lon");
@@ -54,7 +54,7 @@ document.getElementById("search-city").addEventListener("click", function (event
 
 function renderLastCityInfo() {
     var queryURL1 =
-        "https://api.openweathermap.org/data/2.5/weather?q=" + lastCitySearched + "&appid=" + APIKey;
+        "https://api.openweathermap.org/data/2.5/weather?q=" + lastCitySearched + "&units=imperial&appid=" + APIKey;
 
     fetch(queryURL1)
         .then(function (response) {
@@ -90,7 +90,10 @@ function renderCityInfo(lat, lon) {
             return response.json();
         })
         .then(function (response) {
-            document.getElementById("temperature").textContent = `Temperature: ${response.current.temp} °F`;
+            var temperatureInFahrenheit = response.current.temp;
+            var temperatureInCelsius = fahrenheitToCelsius(temperatureInFahrenheit);
+
+            document.getElementById("temperature").textContent = `Temperature: ${temperatureInCelsius} °C`;
             document.getElementById("humidity").textContent = `Humidity: ${response.current.humidity}%`;
             document.getElementById("wind-speed").textContent = `Wind Speed: ${response.current.wind_speed} MPH`;
             var uvIndexContainer = document.getElementById("uv-index");
@@ -131,7 +134,9 @@ function renderForecast(response) {
         dayCardBody.appendChild(weatherIcon);
 
         var dayTemp = document.createElement("p");
-        dayTemp.textContent = `Temp: ${day.temp.max} °F`;
+        var temperatureInFahrenheit = day.temp.max;
+        var temperatureInCelsius = fahrenheitToCelsius(temperatureInFahrenheit);
+        dayTemp.textContent = `Temp: ${temperatureInCelsius} °C`;
         dayCardBody.appendChild(dayTemp);
 
         var dayHumidity = document.createElement("p");
@@ -140,4 +145,14 @@ function renderForecast(response) {
 
         forecastContainer.appendChild(dayCard);
     });
+}
+
+function fahrenheitToCelsius(fahrenheit) {
+    const celsius = (fahrenheit - 32) / 1.8;
+    return celsius;
+}
+
+
+if (lastCitySearched) {
+    renderLastCityInfo();
 }
